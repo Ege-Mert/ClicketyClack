@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace WPF;
+namespace ClicketyClack;
 
 public partial class App : Application
 {
@@ -30,8 +30,8 @@ public partial class App : Application
 
         _settings = AppSettings.Load();
 
-        _leftClickSoundFile = ExtractEmbeddedSound("WPF.Sounds.left_click.wav");
-        _rightClickSoundFile = ExtractEmbeddedSound("WPF.Sounds.right_click.wav");
+        _leftClickSoundFile = ExtractEmbeddedSound("ClicketyClack.Assets.Sounds.left_click.wav");
+        _rightClickSoundFile = ExtractEmbeddedSound("ClicketyClack.Assets.Sounds.right_click.wav");
         UpdateSoundPlayback();
 
         _overlay = new OverlayWindow(_settings);

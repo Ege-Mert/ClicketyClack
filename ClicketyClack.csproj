@@ -8,18 +8,19 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>ClicketyClack</AssemblyName>
-    <RootNamespace>WPF</RootNamespace>
-    <ApplicationIcon>Icon\me.ico</ApplicationIcon>
+    <RootNamespace>ClicketyClack</RootNamespace>
+    <ApplicationIcon>Assets\Icon\me.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Icon\me.ico" />
-    <Resource Include="Icon\me.ico" />
+    <None Remove="Assets\Icon\me.ico" />
+    <Resource Include="Assets\Icon\me.ico" />
     <Folder Include="publish\" />
+    <Folder Include="Assets\Screenshots\" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Sounds\*.wav" />
+    <EmbeddedResource Include="Assets\Sounds\*.wav" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">

@@ -29,7 +29,7 @@ if (Test-Path $zipPath)
     Remove-Item -LiteralPath $zipPath -Force
 }
 
-dotnet publish .\WPF.csproj `
+dotnet publish .\ClicketyClack.csproj `
     -c $Configuration `
     -r $Runtime `
     --self-contained true `

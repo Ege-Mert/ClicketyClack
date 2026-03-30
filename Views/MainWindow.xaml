@@ -1,11 +1,11 @@
-<Window x:Class="WPF.MainWindow"
+<Window x:Class="ClicketyClack.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ClicketyClack"
         Height="390" Width="500"
         SizeToContent="Height"
         ResizeMode="NoResize"
-        Icon="Icon/me.ico"
+        Icon="Assets/Icon/me.ico"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
         <Grid.RowDefinitions>

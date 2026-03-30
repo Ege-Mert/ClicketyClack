@@ -2,16 +2,18 @@
 
 ClicketyClack is a small Windows app that adds click rings and optional sounds to left and right mouse clicks.
 
-This project is unintentionally overkill. WPF is far more than this app needs. It was made entirely for entertainment purposes.
+This project is intentionally overkill. WPF is far more than this app needs, and that is part of the point. It was made entirely for entertainment purposes.
 
-And Heavily insperied by Bandicam's mouse effects.
+It is also heavily inspired by Bandicam's mouse effects.
+
+![ClicketyClack demo](Assets/Screenshots/demo.gif)
 
 ## What it does
 
 - Shows a visual ring when you click
 - Lets you set separate colors for left and right click
 - Adds an optional cursor highlight
-- Plays optional click sounds that you could play anything you want
+- Plays optional click sounds
 
 ## Run locally
 
@@ -36,7 +38,7 @@ dotnet run
 You can work on the project in either:
 
 - VS Code: open the folder and use the C# extension
-- Visual Studio: open `WPF.sln`
+- Visual Studio: open `ClicketyClack.sln`
 
 ## Build a release
 
@@ -45,6 +47,15 @@ powershell -ExecutionPolicy Bypass -File .\Publish-Release.ps1
 ```
 
 That creates a self-contained `win-x64` build and a zip file in `publish\`.
+
+## Project structure
+
+```
+Views/      # MainWindow and OverlayWindow (XAML + code-behind)
+Models/     # AppSettings
+Services/   # MouseHook (global low-level mouse hook)
+Assets/     # Icon, sounds, screenshots
+```
 
 ## Settings
 

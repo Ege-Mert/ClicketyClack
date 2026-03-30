@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace WPF;
+namespace ClicketyClack;
 
 public sealed class MouseHook : IDisposable
 {
