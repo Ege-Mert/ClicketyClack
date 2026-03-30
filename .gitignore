@@ -1,0 +1,17 @@
+bin/
+obj/
+publish/
+.dotnet/
+.nuget/
+
+.vs/
+*.user
+*.suo
+*.userprefs
+
+*.pdb
+*.cache
+*.log
+
+Thumbs.db
+Desktop.ini

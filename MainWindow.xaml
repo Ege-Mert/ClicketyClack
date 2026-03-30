@@ -1,0 +1,170 @@
+<Window x:Class="WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ClicketyClack"
+        Height="390" Width="500"
+        SizeToContent="Height"
+        ResizeMode="NoResize"
+        Icon="Icon/me.ico"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Mouse Effects Group -->
+        <GroupBox Header="Mouse effects" Grid.Row="0" Padding="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="170" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Left: Settings -->
+                <StackPanel Grid.Column="0">
+                    <!-- Click Effect -->
+                    <CheckBox x:Name="chkClickEffect" Content="Add mouse click effect"
+                              Margin="0,2,0,4" Checked="OnSettingChanged" Unchecked="OnSettingChanged"/>
+                    <Grid Margin="20,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110" />
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="28" />
+                            <RowDefinition Height="28" />
+                            <RowDefinition Height="28" />
+                            <RowDefinition Height="28" />
+                            <RowDefinition Height="28" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Size" VerticalAlignment="Center" />
+                        <ComboBox x:Name="cmbClickSize" Grid.Column="1"
+                                  VerticalAlignment="Center"
+                                  SelectionChanged="OnComboChanged"/>
+                        <TextBlock Text=" %" VerticalAlignment="Center" Grid.Column="2"/>
+
+                        <TextBlock Text="Thickness" VerticalAlignment="Center" Grid.Row="1"/>
+                        <ComboBox x:Name="cmbThickness" Grid.Row="1" Grid.Column="1"
+                                  VerticalAlignment="Center"
+                                  SelectionChanged="OnComboChanged"/>
+                        <TextBlock Text=" px" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2"/>
+
+                        <CheckBox x:Name="chkPixelated" Content="Pixelated circles"
+                                  Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Center"
+                                  Checked="OnSettingChanged" Unchecked="OnSettingChanged"/>
+
+                        <TextBlock Text="Left click color" VerticalAlignment="Center" Grid.Row="3"/>
+                        <Border x:Name="brdLeftColor" Grid.Row="3" Grid.Column="1"
+                                Height="18" Margin="0,0,10,0"
+                                BorderBrush="#888" BorderThickness="1"
+                                Background="Red" Cursor="Hand"
+                                MouseLeftButtonDown="LeftColor_Click"/>
+
+                        <TextBlock Text="Right click color" VerticalAlignment="Center" Grid.Row="4"/>
+                        <Border x:Name="brdRightColor" Grid.Row="4" Grid.Column="1"
+                                Height="18" Margin="0,0,10,0"
+                                BorderBrush="#888" BorderThickness="1"
+                                Background="Blue" Cursor="Hand"
+                                MouseLeftButtonDown="RightColor_Click"/>
+                    </Grid>
+
+                    <!-- Highlight Effect -->
+                    <CheckBox x:Name="chkHighlight" Content="Add mouse highlight effect"
+                              Margin="0,10,0,4" Checked="OnSettingChanged" Unchecked="OnSettingChanged"/>
+                    <Grid Margin="20,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110" />
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="28" />
+                            <RowDefinition Height="28" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Size" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="cmbHighlightSize" Grid.Column="1"
+                                  VerticalAlignment="Center"
+                                  SelectionChanged="OnComboChanged"/>
+                        <TextBlock Text=" %" VerticalAlignment="Center" Grid.Column="2"/>
+
+                        <TextBlock Text="Highlight color" VerticalAlignment="Center" Grid.Row="1"/>
+                        <Border x:Name="brdHighlightColor" Grid.Row="1" Grid.Column="1"
+                                Height="18" Margin="0,0,10,0"
+                                BorderBrush="#888" BorderThickness="1"
+                                Background="Yellow" Cursor="Hand"
+                                MouseLeftButtonDown="HighlightColor_Click"/>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Right: Preview -->
+                <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                    <TextBlock Text="Preview" Margin="0,0,0,4"/>
+                    <Border BorderBrush="#999" BorderThickness="1" Width="150" Height="150">
+                        <Canvas x:Name="previewCanvas" ClipToBounds="True">
+                            <Canvas.Background>
+                                <DrawingBrush TileMode="Tile" Viewport="0,0,16,16" ViewportUnits="Absolute">
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <GeometryDrawing Brush="#FFF">
+                                                <GeometryDrawing.Geometry>
+                                                    <RectangleGeometry Rect="0,0,16,16"/>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing Brush="#DDD">
+                                                <GeometryDrawing.Geometry>
+                                                    <GeometryGroup>
+                                                        <RectangleGeometry Rect="0,0,8,8"/>
+                                                        <RectangleGeometry Rect="8,8,8,8"/>
+                                                    </GeometryGroup>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Canvas.Background>
+                        </Canvas>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <!-- Click Sounds -->
+        <GroupBox Header="Play mouse click sounds" Grid.Row="1" Margin="0,8,0,0" Padding="8,4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                </Grid.RowDefinitions>
+
+                <CheckBox x:Name="chkLeftSound" Content="Left click" VerticalAlignment="Center"
+                          Checked="OnSettingChanged" Unchecked="OnSettingChanged"/>
+                <TextBox x:Name="txtLeftSoundPath" Grid.Column="1" Margin="8,2"
+                         VerticalAlignment="Center" IsReadOnly="True" FontSize="11"/>
+                <Button Content="Browse..." Grid.Column="2" Width="60" Height="22"
+                        VerticalAlignment="Center" Click="BrowseLeftSound_Click"/>
+                <Button Content="Default" Grid.Column="3" Width="52" Height="22" Margin="4,0,0,0"
+                        VerticalAlignment="Center" Click="DefaultLeftSound_Click"/>
+
+                <CheckBox x:Name="chkRightSound" Content="Right click" Grid.Row="1" VerticalAlignment="Center"
+                          Checked="OnSettingChanged" Unchecked="OnSettingChanged"/>
+                <TextBox x:Name="txtRightSoundPath" Grid.Row="1" Grid.Column="1" Margin="8,2"
+                         VerticalAlignment="Center" IsReadOnly="True" FontSize="11"/>
+                <Button Content="Browse..." Grid.Row="1" Grid.Column="2" Width="60" Height="22"
+                        VerticalAlignment="Center" Click="BrowseRightSound_Click"/>
+                <Button Content="Default" Grid.Row="1" Grid.Column="3" Width="52" Height="22" Margin="4,0,0,0"
+                        VerticalAlignment="Center" Click="DefaultRightSound_Click"/>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>
