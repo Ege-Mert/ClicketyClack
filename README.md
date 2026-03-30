@@ -29,7 +29,7 @@ dotnet run
 ## Development
 
 ```powershell
-git clone <your-repo-url>
+git clone https://github.com/Ege-Mert/ClicketyClack
 cd ClicketyClack
 dotnet restore
 dotnet run
